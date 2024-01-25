@@ -129,12 +129,38 @@ public class StringList {
      * @return the content as an array of Strings
      */
     public String[] toArray(){
-        String[] rval = new String[numElements];
+        String[] result = new String[numElements];
         for (int i = 0; i < numElements; i++){
-            rval[i] = list[i];
+            result[i] = list[i];
         }
         // directly return, no need to re-assign to instance variable 'list'.
-        return rval;
+        return result;
     }
+
+    /**
+     * Bonus exercise:
+     * public String toString()
+     * Returns the content as a String representation without null elements.
+     * Output must look like this:
+     * [element1, element2, element3]
+     */
+    public String toString(){
+        // start "["
+        StringBuilder result = new StringBuilder("[");
+
+        // add items, add ", " (use stringbuilder to add more string/char)
+        for(int i = 0; i < numElements; i++){
+            if (list[i] != null){
+                result.append(list[i]);
+                if (i < numElements - 1 && list[i + 1] != null){ // check if current element is not the last non-null element.
+                    result.append(", ");
+                }
+            }
+        }
+        // the end "]"
+        result.append("]");
+        return result.toString(); // StringBuilder's toString method
+    }
+
 
 }
