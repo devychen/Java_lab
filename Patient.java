@@ -11,6 +11,9 @@
  * Implement all methods in documentation
  * Hint: Don't forget to use super
  * 
+ * in lab 9 & 10-1 'return false' is used
+ * in lab 10-2 changed to 'throw exception'
+ * 
  */
 
 public class Patient extends Person9 {
@@ -48,17 +51,11 @@ public class Patient extends Person9 {
      */
     public Patient(String aName, String aSsn) {
         super.setName(aName);           // Jessica super(aName)
+        // add exception
+        if(!isValidSsn(aSsn)){
+            throw new SSNFormatException("Wrong SSN format.");
+        }
         setSsn(aSsn);
-    }
-
-    /**
-     * Get a string represenation of this Patient
-     * 
-     * @return a string representation of this Patient.
-     */
-    @Override
-    public String toString() {                          // Override
-        return super.toString() + "\nSSN: " + ssn;      // Jessica getSsn();
     }
 
     /**
@@ -77,6 +74,16 @@ public class Patient extends Person9 {
      */
     public String getSsn() {
         return ssn;
+    }
+
+    /**
+     * Get a string represenation of this Patient
+     * 
+     * @return a string representation of this Patient.
+     */
+    @Override
+    public String toString() {                          // Override
+        return super.toString() + "\nSSN: " + ssn;      // Jessica getSsn();
     }
 
     /**
@@ -110,38 +117,29 @@ public class Patient extends Person9 {
      * Create a class PatientTest and add tests for your new method
      */
 
-    // !with static, the method could be called directly...
+    // !!! with static, the method could be called directly...
     // ..without the new: ExampleClass instance = new ExampleClass();
+    // see the according JUnit test for details
     public static boolean isValidSsn(String aSsn) {
         if (aSsn == null) {
-            throw new IllegalArgumentException("Input object must not be null.");
+            return false;
+        } else if (aSsn.length() != 11){
+            return false;
         }
 
-        char[] ssnArray = new char[aSsn.length()];      // create charArray equals length
-        for (int i = 0; i < aSsn.length(); i++) {
+        // Create an array
+        char[] ssnArray = new char[aSsn.length()];
+        for (int i = 0; i < aSsn.length(); i++){
             ssnArray[i] = aSsn.charAt(i);
         }
-
-        // d d d - d d - d d d d
-        // 0 1 2 3 4 5 6 7 8 9 10
-
-        char[] numberList = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-
-        for (int i = 0; i < ssnArray.length; i++) {
-            if (i == 3 || i == 6) {
+        
+        for(int i = 0; i < ssnArray.length; i++){
+            if (i == 3 || i == 6){
                 if (ssnArray[i] != '-') {
                     return false;
                 }
             } else {
-                boolean isDigit = false;
-                for (int j = 0; j < numberList.length; j++) {
-                    char digit = numberList[j];
-                    if (ssnArray[j] == digit) {
-                        isDigit = true;
-                        break;
-                    }
-                }
-                if (!isDigit) {
+                if (!Character.isDigit(ssnArray[i])){    // Character class method
                     return false;
                 }
             }
