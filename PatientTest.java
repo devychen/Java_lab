@@ -69,7 +69,8 @@ public class PatientTest {
         Patient p1 = new Patient();
         p1.setSsn("111-11-1111");       // value not assigned, so not 'getSsn'
         Patient p2 = new Patient();
-        p2.setSsn("222-22-1112");     
+        p2.setSsn("222-22-1112"); 
+        assertEquals(p1, p2);    
     }
 
     /**
@@ -78,8 +79,8 @@ public class PatientTest {
     @Test
     public void testPatientNotEqual3(){         // ???
         Patient p1 = new Patient("Rei");
-        Patient p2 = new Patient();
-        p2.setSsn("222-22-2222");
+        Person9 p2 = new Person9("Rei");
+        assertEquals(p1, p2);
     }
 
     /**
