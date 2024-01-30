@@ -118,22 +118,30 @@
 - How-to write text to file: `PrintWriter outStream;` - `outStream = new PrintWriter("out.txt");` - `outStream.println("Umu");` - `outStream.close();`.
 - How-to read text from file: `BufferedReader reader = new BufferedReader(new FileReader("umu.txt"));` - `while ((st = reader.readLine()) != null);` - `System.out.println(st);` - `reader.close();`.
 - BufferedWriter can be used to improve performance when writing to a text file.
-- `Try with resources` can be used to automatically close all resources used in  an IO operation.
+- `Try with resources` can be used to automatically close all resources used in an IO operation.
 
 
 **`String` methods** <br>
-`charAt(Index)` the char at the index
-`compareTo(A_String)`compare two strings lexicographic order. Neg if first, 0 if equal, pos if later.
-`concat(A_String)`
-`equals()`, `equalsIgnoreCase()`
-`indexOf(A_String)`
-`lastIndexOf(A_String)`
-`length()`
-`toLowerCase()`, `toUpperCase()`
-`replace(OldChar, NewChar)`
-`substring(Start)`, `substring(Start, End)`
-`trim()`
+- `charAt(Index)` the char at the index
+- `compareTo(A_String)`compare two strings lexicographic order. Neg if first, 0 if equal, pos if later.
+- `concat(A_String)`
+- `equals()`, `equalsIgnoreCase()`
+- `indexOf(A_String)`
+- `lastIndexOf(A_String)`
+- `length()`
+- `toLowerCase()`, `toUpperCase()`
+- `replace(OldChar, NewChar)``substring(Start)`, `substring(Start, End)`
+- `trim()`
 
 **`Math` methods** <br>
+- `max`, `min`
+- `round`
+- `ceil`, `floor`
+- `sqr`
 
-**`Scanner` methods** <br>
+**`Scanner` methods** (boolean) <br>
+- `hasNext()`
+- `hasNextDouble()`, `hasNextInt()`, `hasNextLine()`
+
+**`Object` Class**
+- toString()
